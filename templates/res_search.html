@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+
+          <a href="{% url 'home' %}" class="navbar-brand">询道</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+          <i class="glyphicon glyphicon-search"></i>
+          </button>
+
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+          <form class="navbar-form pull-left">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{ query }}" value="{{ query }}" name="q" id="srch-term">
+                <div class="input-group-btn">
+                  <button class="btn btn-default btn-success" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+             <li><a href="#" target="_ext">关于</a></li>
+           </ul>
+        </div>
+     </div>
+</nav>
+
+<div class="container" id="main">
+<div class="row">
+   <div class="col-12">
+<p>查询的内容: {{ query }}, 发现{{ count }}条符合条件的内容，
+第<font color="red">{{ page }}</font>页,共<font color="red">{{ total_page  }}</font>页,
+用时<font color="red">{{ time }}</font>秒
+{% if results %}
+    {% for res in results %}
+        <li>
+        <b> <a href="#">{{ res.ask_title }} </a></b>
+            <br/>
+        {{ res.content }}<br/>
+        {{ res.answers |length }}个回答
+        </li>
+    {% endfor %}
+{% else %}
+     <p>No contents found.
+{% endif %}
+<br/><br/><br/><a href="{% url 'search' %}?q={{ query }}&page={{ nextpage }}" />下一页</a>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+    {% block content %}
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-fixed-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+
+          <a href="{% url 'home' %}" class="navbar-brand"></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+          <i class="glyphicon glyphicon-search"></i>
+          </button>
+
+        </div>
+          <ul class="nav navbar-nav navbar-right">
+             <li><a href="#" target="_ext">关于</a></li>
+           </ul>
+        </div>
+     </div>
+    </nav>
+
+	<div id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h1>询道</h1>
+					<h2 class="subtitle">询君意，道君思</h2>
+					<form class="form-inline search" role="form" method="get" action="{% url 'search' %}">
+					  <div class="form-group">
+					    <input type="text" class="form-control" id="search" name="q" placeholder="请输入问题">
+					  </div>
+					  <button type="submit" class="btn btn-theme">查询</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    {% endblock %}
