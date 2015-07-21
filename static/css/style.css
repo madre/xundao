@@ -101,7 +101,7 @@ form.search input.form-control:focus {
 /* Header */
 
 #header {
-	/*background-color: #444;*/
+	background-color: #fff;
 	margin-top: -20px;
 	padding-top: 150px;
 	background-attachment: relative;
@@ -127,7 +127,7 @@ form.search input.form-control:focus {
 .navbar-default .dropdown-menu li > a {padding-left:30px;}
 
 #main {
- padding-top:70px;
+ padding-top:10px;
  padding-bottom: 20px;
 }
 

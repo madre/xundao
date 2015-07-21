@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'elastic',
 )
 
@@ -104,6 +105,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, ".")
 
 STATIC_URL = '/static/'
