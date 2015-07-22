@@ -32,7 +32,8 @@ def search(request):
                                                    'total_page': total_hits / PAGE_SIZE,
                                                    'host': request.META['SERVER_NAME'],
                                                    'port': request.META['SERVER_PORT'],
-                                                   'nextpage': int(page) + 1})
+                                                   'previous_page': int(page)-1,
+                                                   'next_page': int(page)+1})
     else:
         message = 'You submitted an empty form.'
         return HttpResponse(message)

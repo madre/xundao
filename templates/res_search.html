@@ -29,23 +29,47 @@
 <div class="container" id="main">
 <div class="row">
    <div class="col-12">
-<p>查询的内容: {{ query }}, 发现{{ count }}条符合条件的内容，
+       <p>共发现{{ count }}条符合条件的内容，
 第<font color="red">{{ page }}</font>页,共<font color="red">{{ total_page  }}</font>页,
 用时<font color="red">{{ time }}</font>秒
 {% if results %}
     {% for res in results %}
         <li>
         <b> <a href="#">{{ res.ask_title }} </a></b>
-            <br/>
-        {{ res.content }}<br/>
-        {{ res.answers |length }}个回答
+        <p>{{ res.content | truncatechars:100 }}</p>
+        <p>{{ res.answers |length }}个回答</p>
         </li>
     {% endfor %}
 {% else %}
      <p>No contents found.
 {% endif %}
-<br/><br/><br/><a href="{% url 'search' %}?q={{ query }}&page={{ nextpage }}" />下一页</a>
     </div>
-    </div>
+<nav>
+  <ul class="pagination">
+    <li>
+      {% if previous_page %}
+      <a href="{% url 'search' %}?q={{ query }}&page={{ previous_page }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      {% endif %}
+    </li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=1">1</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=2">2</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=3">3</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=4">4</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=5">5</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=6">6</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=7">7</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=8">8</a></li>
+    <li><a href="{% url 'search' %}?q={{ query }}&page=9">9</a></li>
+    <li>
+      <a href="{% url 'search' %}?q={{ query }}&page={{ next_page }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+</div>
     </div>
 {% endblock %}
