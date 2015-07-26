@@ -35,9 +35,9 @@
 {% if results %}
     {% for res in results %}
         <li>
-        <b> <a href="#">{{ res.ask_title | safe }} </a></b>
+        <b> <a href="http://zhidao.baidu.com/question/{{ res.qid }}.html">{{ res.ask_title | safe }} </a></b>
         <p>{{ res.content | safe | truncatechars:100 }}</p>
-        <p>{{ res.answers | safe |length }}个回答</p>
+        <p>{{ res.answers |length }}个回答</p>
         </li>
     {% endfor %}
 <nav>
