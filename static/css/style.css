@@ -41,7 +41,7 @@ em{
     text-decoration: underline;
 }
 
-a {
+.row a {
     color: #000;
     word-wrap: break-word;
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -51,8 +51,8 @@ a {
     transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
-a:hover,
-a:focus {
+.row a:hover,
+.row a:focus {
     color: #000;
     text-decoration: none;
     outline: 0;
@@ -126,9 +126,10 @@ form.search input.form-control:focus {
 
 .navbar-default {background-color:#f4f4f4;margin-top:50px;border-width:0;z-index:5;}
 .navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > li:hover > a
-{border:0 solid #4285f4;border-bottom-width:2px;font-weight:800;background-color:transparent;}
+{border:0 solid #fd680e;border-bottom-width:2px;font-weight:800;background-color:transparent;}
 .navbar-default .dropdown-menu {background-color:#ffffff;}
 .navbar-default .dropdown-menu li > a {padding-left:30px;}
+.navbar a {color: #fd680e;}
 
 #main {
  padding-top:10px;
