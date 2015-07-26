@@ -35,10 +35,14 @@ p {
     margin-bottom: 20px;
     font-size: 16px;
 }
-
+em{
+    color: #fd680e;
+    font-size: larger;
+    text-decoration: underline;
+}
 
 a {
-    color: #fd680e;
+    color: #000;
     word-wrap: break-word;
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
     -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -49,7 +53,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #fd680e;
+    color: #000;
     text-decoration: none;
     outline: 0;
 }
