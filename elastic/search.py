@@ -17,6 +17,25 @@ def do_search(query, page):
     if page < 1:
         page = 1
 
-    search_res = es.search(index='zhidao', doc_type='QuestionItem', q=query, from_=page)
+    search_res = es.search(index='zhidao', doc_type='QuestionItem', body={
+    "query": {
+        "filtered": {
+            "query": {
+                "match": {
+                    "ask_title": query
+                }
+            }
+        }
+    },
+    "from": page,
+    "size": 10,
+    "highlight": {
+        "fields": {
+            "ask_title": {},
+            "content": {},
+            "answers": {}
+        }
+    }
+})
     results = search_res["hits"]
     return results

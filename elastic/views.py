@@ -25,7 +25,14 @@ def search(request):
 
         search_res = do_search(query, page)
         total_hits = search_res["total"]
-        results = [each["_source"] for each in search_res["hits"]]
+        # results = [each["_source"] for each in search_res["hits"]]
+        results = []
+        for each in search_res["hits"]:
+            for highlight in each["highlight"].keys():
+                print each["_source"][highlight]
+                print each["highlight"][highlight][0]
+                each["_source"][highlight] = each["highlight"][highlight][0]
+            results.append(each["_source"])
         end = clock()
         total_page = total_hits / PAGE_SIZE
         if total_page < 10:
