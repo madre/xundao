@@ -29,8 +29,6 @@ def search(request):
         results = []
         for each in search_res["hits"]:
             for highlight in each["highlight"].keys():
-                print each["_source"][highlight]
-                print each["highlight"][highlight][0]
                 each["_source"][highlight] = each["highlight"][highlight][0]
             results.append(each["_source"])
         end = clock()
