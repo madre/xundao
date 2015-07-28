@@ -37,6 +37,7 @@ p {
 }
 em{
     color: #fd680e;
+    font-style: normal;
     text-decoration: underline;
 }
 
