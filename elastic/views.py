@@ -28,6 +28,8 @@ def search(request):
         # results = [each["_source"] for each in search_res["hits"]]
         results = []
         for each in search_res["hits"]:
+            each["_source"]["people"] = each["_source"]["people_link"].\
+                split("/")[-1].split("?")[0] if each["_source"]["people_link"] else u"匿名"
             for highlight in each["highlight"].keys():
                 each["_source"][highlight] = each["highlight"][highlight][0]
             results.append(each["_source"])

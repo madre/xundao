@@ -28,17 +28,18 @@
 
 <div class="container" id="main">
 <div class="row">
-   <div class="col-12">
+   <div class="col-md-9">
        <p>共发现{{ count }}条符合条件的内容，
 第<font color="red">{{ page }}</font>页,共<font color="red">{{ total_page  }}</font>页,
-用时<font color="red">{{ time }}</font>秒
+用时<font color="red">{{ time }}</font>秒</p>
 {% if results %}
     {% for res in results %}
-        <li>
-        <b> <a href="http://zhidao.baidu.com/question/{{ res.qid }}.html">{{ res.ask_title | safe }} </a></b>
-        <p>{{ res.content | safe | truncatechars:100 }}</p>
-        <p>{{ res.answers |length }}个回答</p>
-        </li>
+        <div>
+        <h5><a href="http://zhidao.baidu.com/question/{{ res.qid }}.html">{{ res.ask_title | safe }} </a></h5>
+        <p>问: {{ res.content | safe | truncatechars:100 }}</p>
+        <p>答: {{ res.answers.0.content | safe | truncatechars_html:100 }} </p>
+        <p>{{ res.ask_time }} 回答者: <a href="{{ res.people_link }}"> {{ res.people }}</a> | {{ res.answers | length }} 个回答</p>
+        </div>
     {% endfor %}
 <nav>
   <ul class="pagination">
@@ -65,6 +66,18 @@
      <p>No contents found.
 {% endif %}
     </div>
+<div class="col-md-3">
+    <h6>推荐话题</h6>
+    <div>
+        <ul>
+            {% for each in results %}
+            <li>
+                <a href="{% url 'search' %}?q={{ each.class_info }}">{{ each.class_info }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 </div>
     </div>
 {% endblock %}
