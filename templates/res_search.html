@@ -70,9 +70,9 @@
     <h6>推荐话题</h6>
     <div>
         <ul>
-            {% for each in results %}
+            {% for each in recommend_info %}
             <li>
-                <a href="{% url 'search' %}?q={{ each.class_info }}">{{ each.class_info }}</a>
+                <a href="{% url 'search' %}?q={{ each }}">{{ each }}</a>
             </li>
             {% endfor %}
         </ul>
